@@ -9,8 +9,8 @@ var bodyParser = require('body-parser');
 // before my controllers load the db.
 require('./db/database');
 
-var routes = require('./controllers/index');
-var users = require('./controllers/users');
+var controllers = require('./controllers/index');
+var places = require('./controllers/places');
 
 var app = express();
 
@@ -27,8 +27,8 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+app.use('/', controllers);
+app.use('/places', places);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
